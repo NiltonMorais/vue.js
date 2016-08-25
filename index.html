@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style type="text/css">
-        .pago{
-            color: green;
-        }
-        .nao-pago{
+        .red{
             color: red;
         }
-        .nao-existe{
+        .green{
+            color: green;
+        }
+        .gray{
             color: gray;
         }
     </style>
@@ -18,7 +18,7 @@
 <body id="app">
 
 <h1>{{title}}</h1>
-<h3 class="{{status_class}}">{{status}}</h3>
+<h3 :class="{'gray': status === false,'green': status === 0,'red': status > 0}">{{status | statusGeneral}}</h3>
 <nav>
     <ul>
         <li v-for="o in menus">
@@ -44,12 +44,12 @@
             <td>{{o.date_due}}</td>
             <td>{{o.name}}</td>
             <td>{{o.value | currency "R$ " 2}}</td>
-            <td :class="{'pago': o.done,'nao-pago': !o.done}">{{o.done | doneLabel}}</td>
+            <td :class="{'green': o.done,'red': !o.done}">{{o.done | doneLabel}}</td>
             <td>
                 <button href="#" @click.prevent="loadBill(o)">Editar</button>
                 <button href="#" @click.prevent="down(index)">Pagar</button>
                 <button href="#" @click.prevent="up(index)">Não paga</button>
-                <button href="#" @click.prevent="delete(index)">Excluir</button>
+                <button href="#" @click.prevent="deleteBill(o)">Excluir</button>
             </td>
         </tr>
         </tbody>
@@ -70,15 +70,8 @@
         <label>Valor:</label>
         <input type="text" v-model="bill.value">
         <br><br>
-        <label>Paga?</label>
-        <select v-model="bill.done">
-            <option value="0">
-                Não
-            </option>
-            <option value="1">
-                Sim
-            </option>
-        </select>
+        <label>Pago?</label>
+        <input type="checkbox" v-model="bill.done">
         <br><br>
         <input type="submit" value="Enviar" />
     </form>
