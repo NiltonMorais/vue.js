@@ -13,15 +13,13 @@ window.billPayListComponent = Vue.extend({
                 </thead>
                 <tbody>
                 <tr v-for="(index,o) in bills">
-                    <td>{{index + 1}}</td>
+                    <td>{{o.id}}</td>
                     <td>{{o.date_due}}</td>
                     <td>{{o.name}}</td>
                     <td>{{o.value | currency "R$ " 2}}</td>
                     <td :class="{'green': o.done,'red': !o.done}">{{o.done | doneLabel}}</td>
                     <td>
-                        <button v-link="{name: 'bill-pay.update',params: {index: index}}">Editar</button>
-                        <button href="#" @click.prevent="down(index)">Pagar</button>
-                        <button href="#" @click.prevent="up(index)">Não paga</button>
+                        <button v-link="{name: 'bill-pay.update',params: {id: o.id}}">Editar</button>
                         <button href="#" @click.prevent="deleteBill(o)">Excluir</button>
                     </td>
                 </tr>
@@ -30,20 +28,24 @@ window.billPayListComponent = Vue.extend({
     `,
     data: function(){
         return {
-            bills: this.$root.$children[0].billsPay
+            bills: []
         };
+    },
+    created: function(){
+        var self = this;
+        Bill.query().then(function(response){
+            self.bills = response.data;
+        });
     },
     methods: {
         deleteBill: function (bill) {
             if (confirm("Deseja realmente excluir está conta?")) {
-                this.$root.$children[0].billsPay.$remove(bill);
+                var self = this;
+                Bill.delete({id: bill.id}).then(function(response){
+                    self.bills.$remove(bill);
+                    self.$dispatch('change-info');
+                });
             }
-        },
-        down: function (id) {
-            this.bills[id].done = true;
-        },
-        up: function (id) {
-            this.bills[id].done = false;
-        },
-    },
+        }
+    }
 });

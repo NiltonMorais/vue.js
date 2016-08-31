@@ -1,21 +1,4 @@
 var router = new VueRouter();
-
-var mainComponent = Vue.extend({
-    components: {
-        'bill-component': window.billComponent
-    },
-    template: '<bill-component></bill-component>',
-    data: function(){
-        return {
-            billsPay: [
-                {date_due: '20/08/2016', name: 'Conta de luz', value: 25.99, done: true},
-                {date_due: '21/08/2016', name: 'Conta de água', value: 33.42, done: false},
-                {date_due: '22/08/2016', name: 'Conta de telefone', value: 71.21, done: false},
-            ]
-        }
-    }
-});
-
 router.map({
     '/bill-pays': {
         component: billPayComponent,
@@ -28,7 +11,7 @@ router.map({
                 name: 'bill-pay.create',
                 component: window.billPayCreateComponent
             },
-            '/:index/update': {
+            '/:id/update': {
                 name: 'bill-pay.update',
                 component: window.billPayCreateComponent
             }
@@ -45,7 +28,7 @@ router.map({
 
 router.start({
     components: {
-        'main-component':mainComponent
+        'bill-component': billComponent
     }
 },'#app');
 
