@@ -19,19 +19,37 @@ router.map({
     },
     '/bill-receives': {
         name: "bill-receive",
-        component: billReceiveComponent
+        component: billReceiveComponent,
+        subRoutes: {
+            '/': {
+                name: 'bill-receive.list',
+                component: window.billReceiveListComponent
+            },
+            '/create': {
+                name: 'bill-receive.create',
+                component: window.billReceiveCreateComponent
+            },
+            '/:id/update': {
+                name: 'bill-receive.update',
+                component: window.billReceiveCreateComponent
+            }
+        }
+    },
+    '/bill-dashboard': {
+      name: "bill-dashboard",
+        component: billDashboardComponent
     },
     '*': {
-        component: window.billPayListComponent
+        component: window.billDashboardComponent
     }
 });
 
 router.start({
     components: {
-        'bill-component': billComponent
+        'bill-component': billComponent,
     }
 },'#app');
 
 router.redirect({
-    '*': '/bill-pays'
+    '*': '/bill-dashboard'
 });
