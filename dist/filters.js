@@ -32,12 +32,14 @@ Vue.filter('statusReceive', function (value) {
 
 Vue.filter('numberFormat', {
     read: function read(value) {
+        var locale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "pt-BR";
+
         var number = 0;
         if (value && (typeof value === "undefined" ? "undefined" : _typeof(value)) !== undefined) {
             var numberRegex = value.toString().match(/\d+(\.{1}\d{1,2}){0,1}/g);
             number = numberRegex ? numberRegex[0] : 0;
         }
-        return new Intl.NumberFormat('pt-BR', {
+        return new Intl.NumberFormat(locale, {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2,
             style: 'currency',
@@ -56,6 +58,8 @@ Vue.filter('numberFormat', {
 
 Vue.filter('dateFormat', {
     read: function read(value) {
+        var locale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'pt-BR';
+
         if (value && (typeof value === "undefined" ? "undefined" : _typeof(value)) !== undefined) {
             if (!(value instanceof Date)) {
                 var dateRegex = value.match(/\d{4}\-\d{2}\-\d{2}/g);
@@ -66,7 +70,7 @@ Vue.filter('dateFormat', {
                     return value;
                 }
             }
-            return new Intl.DateTimeFormat('pt-BR').format(value).split(' ')[0];
+            return new Intl.DateTimeFormat(locale).format(value).split(' ')[0];
         }
         return value;
     },

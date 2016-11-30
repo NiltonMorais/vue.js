@@ -1,5 +1,6 @@
 window.billPayListComponent = Vue.extend({
     template: `
+    <div class="container">
             <table border="1" cellpadding="10">
                 <thead>
                 <tr>
@@ -25,6 +26,7 @@ window.billPayListComponent = Vue.extend({
                 </tr>
                 </tbody>
             </table>
+    </div>
     `,
     data(){
         return {
