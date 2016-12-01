@@ -23,7 +23,7 @@ Vue.filter('statusPay', function (value) {
     if (!value) {
         return "Nenhuma conta a pagar";
     }
-    return "Existem " + value + " contas a serem pagas";
+    return value + " contas a pagar";
 });
 
 Vue.filter('statusReceive', function (value) {
@@ -33,7 +33,7 @@ Vue.filter('statusReceive', function (value) {
     if (!value) {
         return "Nenhuma conta a receber";
     }
-    return "Existem " + value + " contas a serem recebidas";
+    return value + " contas a receber";
 });
 
 Vue.filter('numberFormat', {

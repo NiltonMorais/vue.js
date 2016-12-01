@@ -2,25 +2,40 @@ const names = ["Conta de luz", "Conta de água", "Conta de telefone"];
 
 window.billPayCreateComponent = Vue.extend({
     template: `
+    <div class="container">
+        <div class="row">
             <form name="form" @submit.prevent="submit">
-                <label>Vencimento:</label>
-                <input type="text" v-model="bill.date_due | dateFormat">
-                <br><br>
-                <label>Nome:</label>
-                <select v-model="bill.name">
-                    <option v-for="o in names" :value="o">
-                        {{o}}
-                    </option>
-                </select>
-                <br><br>
-                <label>Valor:</label>
-                <input type="text" v-model="bill.value | numberFormat">
-                <br><br>
-                <label>Pago?</label>
-                <input type="checkbox" v-model="bill.done">
-                <br><br>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label>Vencimento</label>
+                        <input type="text" v-model="bill.date_due | dateFormat" placeholder="Informe a data">
+                    </div>
+                    <div class="input-field col s6">
+                        <label>Valor</label>
+                        <input type="text" v-model="bill.value | numberFormat">
+                    </div>
+                </div>
+                <div class="row">
+                    <label>Nome</label>
+                    <select v-model="bill.name" id="name" class="browser-default">
+                        <option value="" disabled selected>Escolha um nome</option>
+                        <option v-for="o in names" :value="o">
+                            {{o}}
+                        </option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="checkbox" v-model="bill.done" id="pago">
+                    <label for="pago">Pago?</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="indeterminate">
+                    <label for="indeterminate">Indeterminado</label>
+                </div>
                 <input type="submit" value="Enviar" />
             </form>
+        </div>
+    </div>
     `,
     data(){
         return {
@@ -33,8 +48,11 @@ window.billPayCreateComponent = Vue.extend({
         if(this.$route.name == 'bill-pay.update'){
             this.formType = 'update';
             this.getBill(this.$route.params.id);
-            return;
         }
+        $(document).ready(function(){
+            $('#name').material_select();
+            $('$indeterminate').prop('indeterminate',true);
+        });
     },
     methods: {
         submit() {

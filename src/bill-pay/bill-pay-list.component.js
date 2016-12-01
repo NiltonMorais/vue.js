@@ -1,7 +1,7 @@
 window.billPayListComponent = Vue.extend({
     template: `
     <div class="container">
-            <table border="1" cellpadding="10">
+            <table class="striped responsive-table">
                 <thead>
                 <tr>
                     <th>#</th>
