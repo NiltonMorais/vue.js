@@ -1,4 +1,7 @@
 window.billComponent = Vue.extend({
+    components: {
+        'modal': window.modalComponent
+    },
     template: `
         <div class="navbar-fixed">
             <ul v-bind:id="o.id" class="dropdown-content" v-for="o in menusDropdown">
@@ -32,6 +35,7 @@ window.billComponent = Vue.extend({
                 </div>
             </nav>
         </div>
+        <modal></modal>
         <router-view></router-view>
     `,
     created(){
