@@ -1,10 +1,7 @@
-'use strict';
+"use strict";
 
 window.billPayComponent = Vue.extend({
-    components: {
-        'menu-component': billPayMenuComponent
-    },
-    template: '\n        <style type="text/css">\n            .red{\n                color: red;\n            }\n            .green{\n                color: green;\n            }\n            .gray{\n                color: gray;\n            }\n        </style>\n        <h1>{{title}}</h1>\n        <h3 :class="{\'gray\': status === false,\'green\': status === 0,\'red\': status > 0}">{{status | statusPay}}</h3>\n        <h3>Total: {{total | numberFormat}}</h3>\n        <menu-component></menu-component>\n        <router-view></router-view>\n        </div>\n    ',
+    template: "\n        <div class=\"section\">\n            <div class=\"container\">\n                <h4>{{title}}</h4>\n                <div class=row>\n                    <div class=\"col s7\">\n                        <div class=\"card z-depth-2\" :class=\"{'gray': status === false,'green': status === 0,'red': status > 0}\">\n                            <div class=\"card-content white-text\">\n                                <p class=\"card-title\">\n                                    <i class=\"material-icons\">account_balance</i>\n                                </p>\n                                <h5>\n                                    {{status | statusPay}}\n                                </h5>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col s5\">\n                        <div class=\"card z-depth-2\">\n                            <div class=\"card-content\">\n                                <p class=\"card-title\">\n                                    <i class=\"material-icons\">payment</i>\n                                </p>\n                                <h5>\n                                  Total: {{total | numberFormat}}\n                                </h5>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"divider\"></div>\n        <router-view></router-view>\n    ",
     data: function data() {
         return {
             title: "Contas a pagar",
