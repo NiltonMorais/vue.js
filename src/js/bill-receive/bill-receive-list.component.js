@@ -1,6 +1,7 @@
-window.billReceiveListComponent = Vue.extend({
+let modalComponent = require('../modal.component');
+module.exports = {
     components: {
-        'modal': window.modalComponent,
+        'modal': modalComponent,
     },
     template: `
     <div class="container">
@@ -76,4 +77,4 @@ window.billReceiveListComponent = Vue.extend({
             $('#'+this.modal.id).modal('open');
         }
     }
-});
+};

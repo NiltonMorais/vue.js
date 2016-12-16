@@ -1,6 +1,8 @@
 const names = ["Conta de luz", "Conta de água", "Conta de telefone"];
 
-window.billPayCreateComponent = Vue.extend({
+let BillPay = require('../bill');
+
+module.exports = {
     template: `
     <div class="container">
         <div class="row">
@@ -52,9 +54,9 @@ window.billPayCreateComponent = Vue.extend({
             this.formType = 'update';
             this.getBill(this.$route.params.id);
         }
-        $(document).ready(function(){
-            $('#name').material_select();
-        });
+    },
+    ready(){
+        $('#name').material_select();
     },
     methods: {
         submit() {
@@ -86,4 +88,4 @@ window.billPayCreateComponent = Vue.extend({
             return dateDueObject.toISOString().split('T')[0];
         }
     }
-});
+};

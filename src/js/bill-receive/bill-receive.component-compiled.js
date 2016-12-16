@@ -1,6 +1,7 @@
 'use strict';
 
-window.billReceiveComponent = Vue.extend({
+var billReceiveMenuComponent = require('./bill-receive-menu.component');
+module.exports = {
     components: {
         'menu-component': billReceiveMenuComponent
     },
@@ -52,6 +53,6 @@ window.billReceiveComponent = Vue.extend({
             this.updateTotal();
         }
     }
-});
+};
 
 //# sourceMappingURL=bill-receive.component-compiled.js.map

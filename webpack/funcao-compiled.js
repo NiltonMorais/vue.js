@@ -1,0 +1,9 @@
+"use strict";
+
+function soma(num1, num2) {
+    return num1 + num2;
+}
+
+module.exports = soma;
+
+//# sourceMappingURL=funcao-compiled.js.map

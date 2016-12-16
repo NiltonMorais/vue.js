@@ -1,0 +1,1 @@
+{"version":3,"sources":["funcao.js"],"names":[],"mappings":";;AAAA,SAAS,IAAT,CAAc,IAAd,EAAmB,IAAnB,EAAwB;AACpB,WAAO,OAAK,IAAZ;AACH;;AAED,OAAO,OAAP,GAAiB,IAAjB","file":"funcao-compiled.js","sourcesContent":["function soma(num1,num2){\r\n    return num1+num2;\r\n}\r\n\r\nmodule.exports = soma;"]}

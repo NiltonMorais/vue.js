@@ -1,4 +1,4 @@
-window.billDashboardComponent = Vue.extend({
+module.exports = {
     template: `
     <h1>Dashboard</h1>
     <h2>Saldo total entre contas a pagar e receber: {{billsPay.total - billsReceive.total | currency "R$ "}}</h2>
@@ -25,4 +25,4 @@ window.billDashboardComponent = Vue.extend({
             });
         }
     },
-});
+};

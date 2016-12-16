@@ -1,4 +1,4 @@
-class BillPay {
+module.exports = class BillPay {
     constructor(data = {}) {
         this.date_due = '';
         this.name = '';
@@ -18,4 +18,4 @@ class BillPay {
             done: this.done,
         };
     }
-}
+};

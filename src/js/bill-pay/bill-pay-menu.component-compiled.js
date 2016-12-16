@@ -1,6 +1,6 @@
 "use strict";
 
-window.billPayMenuComponent = Vue.extend({
+module.exports = {
     template: "\n        <nav>\n                <ul>\n                    <li v-for=\"o in menus\">\n                        <a href=\"#\" v-link=\"{name: o.routeName}\">{{o.name}}</a>\n                    </li>\n                </ul>\n        </nav>\n    ",
     data: function data() {
         return {
@@ -10,6 +10,6 @@ window.billPayMenuComponent = Vue.extend({
             { id: 0, name: "Listar contas", routeName: 'bill-pay.list' }, { id: 1, name: "Criar conta", routeName: 'bill-pay.create' }]
         };
     }
-});
+};
 
 //# sourceMappingURL=bill-pay-menu.component-compiled.js.map

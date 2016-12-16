@@ -1,6 +1,7 @@
-window.billComponent = Vue.extend({
+let modalComponent = require('./modal.component');
+module.exports = {
     components: {
-        'modal': window.modalComponent
+        'modal': modalComponent
     },
     template: `
         <div class="navbar-fixed">
@@ -38,11 +39,9 @@ window.billComponent = Vue.extend({
         <modal></modal>
         <router-view></router-view>
     `,
-    created(){
-        $(document).ready(function(){
-            $('.button-collapse').sideNav();
-            $('.dropdown-button').dropdown();
-        });
+    ready(){
+        $('.button-collapse').sideNav();
+        $('.dropdown-button').dropdown();
     },
     data(){
         return {
@@ -70,4 +69,4 @@ window.billComponent = Vue.extend({
             ]
         };
     }
-});
+};
