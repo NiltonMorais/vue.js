@@ -1,9 +1,8 @@
 'use strict';
 
-require('../sass/app.scss');
-require('./filters');
-require('./resource');
+require('./bootstrap');
 require(['./bill.component', './bill-dashboard.component', './bill-pay/bill-pay.component', './bill-pay/bill-pay-list.component', './bill-pay/bill-pay-create.component', './bill-receive/bill-receive.component', './bill-receive/bill-receive-list.component', './bill-receive/bill-receive-create.component'], function (billComponent, billDashboardComponent, billPayComponent, billPayListComponent, billPayCreateComponent, billReceiveComponent, billReceiveListComponent, billReceiveCreateComponent) {
+    var VueRouter = require('vue-router');
     var router = new VueRouter();
     router.map({
         '/bill-pays': {

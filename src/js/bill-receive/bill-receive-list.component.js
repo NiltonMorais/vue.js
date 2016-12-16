@@ -34,7 +34,7 @@ module.exports = {
     </div>
 
     <modal :modal="modal">
-        <div slot="content">
+        <div slot="content" v-if="billToDelete">
             <h4>Mensagem de confirmação</h4>
             <p><strong>Deseja excluir esta conta?</strong></p>
             <div class="divider"></div>
@@ -77,4 +77,3 @@ module.exports = {
             $('#'+this.modal.id).modal('open');
         }
     }
-};

@@ -1,6 +1,4 @@
-require('../sass/app.scss');
-require('./filters');
-require('./resource');
+require('./bootstrap');
 require([
     './bill.component',
     './bill-dashboard.component',
@@ -21,6 +19,7 @@ require([
         billReceiveListComponent,
         billReceiveCreateComponent
     ){
+    let VueRouter = require('vue-router');
     let router = new VueRouter();
     router.map({
         '/bill-pays': {
