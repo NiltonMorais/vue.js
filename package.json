@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "babel src/js --out-dir dist --watch",
-    "sass": "node-sass ./src/sass -o ./dist/css",
-    "sass:w": "node-sass ./src/sass -o ./dist/css -w",
-    "start": "concurrently \"npm run babel\" \"npm run sass\" \"npm run sass:w\" \"gulp\" \"lite-server\" \"php -S localhost:8000 -t api\""
+    "start": "concurrently \"webpack-dev-server --progress\" \"php -S localhost:8000 -t api\" \"lite-server\"",
+    "build": "webpack"
   },
   "author": "Nilton Morais",
   "license": "ISC",
@@ -21,6 +19,7 @@
   "devDependencies": {
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.10",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.18.0",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -30,6 +29,10 @@
     "sass-loader": "^4.1.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^1.3.3",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^8.5.3",
+    "vue-style-loader": "^1.0.0",
     "webpack": "^1.14.0"
   }
 }

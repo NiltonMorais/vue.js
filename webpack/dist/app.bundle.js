@@ -44,21 +44,40 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	!/* require */(/* empty */function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(1)]; (function(clients){
-	    console.log(colecao);
-	}.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}());
+	'use strict';
 
-	var colecao = __webpack_require__(1);
-	var funcao = __webpack_require__(2);
+	var _clients = __webpack_require__(1);
+
+	var _funcao = __webpack_require__(2);
+
+	console.log(_clients.clients);
+	console.log((0, _funcao.soma)(10, 20));
+	/*
+	require(['./clients'],function(clients){
+	    console.log(colecao);
+	});
+
+	var colecao = require('./clients');
+	var funcao = require('./funcao');
 
 	console.log(colecao);
 	console.log(funcao(10,20));
+	    */
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var clients = [{ name: 'Cliente 1' }, { name: 'Cliente 2' }, { name: 'Cliente 3' }, { name: 'Cliente 4' }];
+
+	exports.clients = clients;
+
+	/*define('clients',[],function(){
 	    var clients = [
 	        {name: 'Cliente 1'},
 	        {name: 'Cliente 2'},
@@ -66,8 +85,8 @@
 	        {name: 'Cliente 4'},
 	    ];
 	    return clients;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
+	});
+	*/
 
 	//module.exports = clients;
 
@@ -75,11 +94,23 @@
 /* 2 */
 /***/ function(module, exports) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.soma = soma;
+	function soma(num1, num2) {
+	    return num1 + num2;
+	};
+
+	/*
 	function soma(num1,num2){
 	    return num1+num2;
 	}
 
 	module.exports = soma;
+	*/
 
 /***/ }
 /******/ ]);

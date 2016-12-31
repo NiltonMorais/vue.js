@@ -1,4 +1,13 @@
-define('clients',[],function(){
+let clients = [
+    {name: 'Cliente 1'},
+    {name: 'Cliente 2'},
+    {name: 'Cliente 3'},
+    {name: 'Cliente 4'}
+];
+
+export {clients};
+
+/*define('clients',[],function(){
     var clients = [
         {name: 'Cliente 1'},
         {name: 'Cliente 2'},
@@ -7,6 +16,7 @@ define('clients',[],function(){
     ];
     return clients;
 });
+*/
 
 
 //module.exports = clients;
