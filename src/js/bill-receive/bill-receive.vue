@@ -36,7 +36,7 @@
 
 <script type="text/javascript">
 import {BillReceiveResource} from '../resource';
-let billReceiveMenuComponent = require('./bill-receive-menu.component');
+let billReceiveMenuComponent = require('./bill-receive-menu.vue');
 
 export default {
     components: {
