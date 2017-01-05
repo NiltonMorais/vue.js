@@ -6,6 +6,7 @@
 </template>
 
 <script type="text/javascript">
+import {BillResource,BillReceiveResource} from './resource';
 export default {
     data: function(){
         return {
@@ -19,10 +20,10 @@ export default {
     methods: {
         updateTotal: function(){
             var self = this;
-            Bill.total().then(function(response){
+            BillResource.total().then(function(response){
                 self.billsPay.total = response.data.total;
             });
-            BillReceive.total().then(function(response){
+            BillReceiveResource.total().then(function(response){
                 self.billsReceive.total = response.data.total;
             });
         }
